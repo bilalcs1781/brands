@@ -8,7 +8,7 @@ import Loader from "../../components/Loader/loader";
 import NoData from "../../components/noData/noData";
 
 export default function PopularCategories() {
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getCategories = async () => {

@@ -13,7 +13,7 @@ import NoData from "../../components/noData/noData";
 import Aos from "aos";
 
 export default function FeaturedListings() {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getProfile = async () => {
@@ -49,79 +49,75 @@ export default function FeaturedListings() {
           </span>
         </h2>
       </div>
-      {profile?.length === 0 ? (
-        <NoData />
-      ) : (
-        <div className="grid lg:grid-cols-3 2xl:grid-cols-3 gap-8 lg:gap-10 my-10 py-6 lg:py-10">
-          {loading ? (
-            <Loader />
-          ) : (
-            profile?.map((item) => {
-              return (
-                <div
-                  className="bg-white rounded-[10px] box-shadow2 flex justify-center flex-col px-5 pb-5"
-                  data-aos="zoom-in"
-                >
-                  <div className="relative">
-                    <div className="flex items-center justify-center">
-                      <img src={item?.logo} alt="cloths" className="" />
-                    </div>
-                    <div className="bg-[#FFF8F8] border border-border2 p-6 -mt-[90px] rounded-[20px]">
-                      <div className="flex items-center justify-between gap-4 pt-14">
-                        <div className="flex gap-5 items-center">
-                          <p className="gradient2 h-[45px] w-[45px] rounded text-xl font-medium text-white flex items-center justify-center">
-                            4.6
-                          </p>
-                          <div className="">
-                            <img src={star} alt="star" className="mb-1" />
-                            <h4 className="text-[17px] text-[#8D8D8D] font-normal">
-                              <span className="text-black font-bold">5.0</span>
-                              (34 Reviews)
-                            </h4>
-                          </div>
+      <div className="w-100 flex-wrap justify-between items-center flex gap-5">
+        {profile?.length === 0 ? (
+          <NoData />
+        ) : loading ? (
+          <Loader />
+        ) : (
+          profile?.map((item) => {
+            return (
+              <div className="bg-white lg:w-[30%] w-full sm:w-[45%] mt-8  h-full rounded-[10px] box-shadow2 flex max-h-[500px] min-h-[500px] justify-between flex-col px-5 pb-5">
+                <div className="">
+                  <div className="flex items-center justify-center">
+                    <img src={item?.logo} alt="cloths" className="" />
+                  </div>
+                  <div className="bg-[#FFF8F8] border border-border2 p-6  rounded-[20px]">
+                    <div className="flex items-center justify-between gap-4 pt-14">
+                      <div className="flex gap-5 items-center">
+                        <p className="gradient2 h-[45px] w-[45px] rounded text-xl font-medium text-white flex items-center justify-center">
+                          4.6
+                        </p>
+                        <div className="">
+                          <img src={star} alt="star" className="mb-1" />
+                          <h4 className="text-[17px] text-[#8D8D8D] font-normal">
+                            <span className="text-black font-bold">5.0</span>
+                            (34 Reviews)
+                          </h4>
                         </div>
-                        <a target="_blanck" href={item?.website}>
-                          <img src={world} alt="star" className="" />
-                        </a>
                       </div>
+                      <a target="_blanck" href={item?.website}>
+                        <img src={world} alt="star" className="" />
+                      </a>
                     </div>
-                    <div className="py-6">
-                      <h4 className="text-xl font-normal mb-1">
-                        <span className="gradient font-bold">
-                          {" "}
-                          {item?.name}
-                        </span>
-                      </h4>
-                      <h6 className="text-xl font-normal flex items-center mb-4">
-                        <span className="font-semibold"> {item?.country} </span>{" "}
-                        <img src={location} alt="location" className="ps-1" />
-                      </h6>
-                      <p className="text-[#8A8A8A] text-[17px]">
-                        {item?.description}
+                  </div>
+                  <div className="py-6">
+                    <h4 className="text-xl font-normal mb-1">
+                      <span className="gradient font-bold"> {item?.name}</span>
+                    </h4>
+                    <h6 className="text-xl font-normal flex items-center mb-4">
+                      <span className="font-semibold"> {item?.country} </span>{" "}
+                      <img src={location} alt="location" className="ps-1" />
+                    </h6>
+                    <p className="text-[#8A8A8A] text-[17px]">
+                      {item?.description?.length > 70
+                        ? `${item?.description?.substring(0, 70)}...`
+                        : item?.description}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div className="border-b border-[#E9E9E9] border-dashed"></div>
+                  <div className="flex items-center justify-between py-4">
+                    <div className="flex items-center gap-4">
+                      <p className="font-normal text-black text-xl lg:text-2xl">
+                        <span className="gradient">{item?.name}</span>
+                        <span className="font-bold"> </span>
                       </p>
                     </div>
-                    <div className="border-b border-[#E9E9E9] border-dashed"></div>
-                    <div className="flex items-center justify-between py-4">
-                      <div className="flex items-center gap-4">
-                        <p className="font-normal text-black text-xl lg:text-2xl">
-                          <span className="gradient">{item?.name}</span>
-                          <span className="font-bold"> </span>
-                        </p>
-                      </div>
-                      <div className=" flex gap-4 items-center">
-                        <a href={item?.mail} target="_balnck">
-                          <img src={mail} alt="star" className="" />
-                        </a>
-                        <img src={heart} alt="star" className="" />
-                      </div>
+                    <div className=" flex gap-4 items-center">
+                      <a href={item?.mail} target="_balnck">
+                        <img src={mail} alt="star" className="" />
+                      </a>
+                      <img src={heart} alt="star" className="" />
                     </div>
                   </div>
                 </div>
-              );
-            })
-          )}
-        </div>
-      )}
+              </div>
+            );
+          })
+        )}
+      </div>
     </div>
   );
 }

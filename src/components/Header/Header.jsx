@@ -2,11 +2,12 @@ import React from "react";
 import brandLogo from "../../assets/images/brand-logo.svg";
 import forwardImg from "../../assets/images/forward.svg";
 import { useState } from "react";
-import { Link, Router } from "react-router-dom";
+import { Link, Router, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  let location = useLocation();
 
   const token = localStorage.getItem("access_token");
   const handleLogout = () => {
@@ -38,13 +39,23 @@ export default function Header() {
             </a>
             <ul className="hidden md:flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
               <li>
-                <a
-                  href="/"
-                  className="block py-2 px-3 md:p-0 text-white font-extrabold text-[18px] rounded md:bg-transparent md:text-[#F4293E]"
-                  aria-current="page"
-                >
-                  Home
-                </a>
+                {location?.pathname === "/" ? (
+                  <a
+                    href="/"
+                    className="block py-2 px-3 md:p-0  font-extrabold text-[18px] rounded md:bg-transparent text-[#F4293E]"
+                    aria-current="page"
+                  >
+                    Home
+                  </a>
+                ) : (
+                  <a
+                    href="/"
+                    className="block py-2 px-3 md:p-0 font-extrabold text-[#464F54] text-[18px] rounded md:bg-transparent "
+                    aria-current="page"
+                  >
+                    Home
+                  </a>
+                )}
               </li>
               <li>
                 <div className="relative">
@@ -98,30 +109,38 @@ export default function Header() {
               </li>
 
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 md:p-0 text-[#464F54] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  <Link to=""> Services</Link>
+                <a className="block py-2 px-3 md:p-0 text-[#464F54] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                  Services
                 </a>
               </li>
+              {location?.pathname === "/businessList" ? (
+                <li>
+                  <a
+                    href="#"
+                    className="block py-2 px-3 md:p-0 text-[#F4293E] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >
+                    <Link to="/businessList"> Bussiness List</Link>
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <a
+                    href="#"
+                    className="block py-2 px-3 md:p-0 text-[#464F54] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                  >
+                    <Link to="/businessList"> Bussiness List</Link>
+                  </a>
+                </li>
+              )}
 
-              <li>
-                <a
-                  href="#"
-                  className="block py-2 px-3 md:p-0 text-[#464F54] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                >
-                  <Link to="/businessList"> Bussiness List</Link>
-                </a>
-              </li>
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   className="block py-2 px-3 md:p-0 text-[#464F54] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                 >
                   <Link to="/contact"> Contact</Link>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

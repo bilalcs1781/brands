@@ -8,7 +8,6 @@ import Login from "./pages/Login";
 import "react-toastify/dist/ReactToastify.css";
 
 import MainComponent from "./pages/MainComponent";
-import ClickScrollToTop from "./components/common/scrollToTop";
 import { useEffect } from "react";
 import Aos from "aos";
 
@@ -18,7 +17,6 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <ClickScrollToTop />
       <Header />
       <Routes>
         {localStorage.getItem("userIsLoggedIn") ? null : (

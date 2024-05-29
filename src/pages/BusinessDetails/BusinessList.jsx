@@ -13,7 +13,7 @@ import Loader from "../../components/Loader/loader";
 import NoData from "../../components/noData/noData";
 
 export default function BusinessList() {
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getProfile = async () => {
