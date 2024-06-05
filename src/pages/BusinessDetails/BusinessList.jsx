@@ -3,34 +3,26 @@ import Vector from "../../assets/images/Vector.svg";
 import search from "../../assets/images/search-list.svg";
 import recommend from "../../assets/images/recommend.svg";
 import lawn from "../../assets/images/lawn.svg";
-import star from "../../assets/images/star-details.svg";
 import OurListed from "../Home/OurListed";
 import { getAllProfiles } from "../../services/bussiness";
 import { computeHeadingLevel } from "@testing-library/react";
 import { setupAxios } from "../../utils/axiosClient";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Loader from "../../components/Loader/loader";
 import NoData from "../../components/noData/noData";
+import ReactPaginate from "react-paginate";
+import PaginationItems from "../../components/common/paginataionItems";
+import { useDebounce } from "use-debounce";
 
 export default function BusinessList() {
-  const [profile, setProfile] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
-  const getProfile = async () => {
-    setupAxios();
-    try {
-      setLoading(false);
-      const res = await getAllProfiles();
-      console.log(res, "res>>>>.");
-      setProfile(res?.data?.results);
-    } catch (error) {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    getProfile();
-  }, []);
-  console.log(profile, "pro>>>>>>>");
+  const name = queryParams.get("name");
+  const category = queryParams.get("category");
+  const [text, setText] = useState(name);
+  const [value] = useDebounce(text, 1000);
+  console.log(name, "cat>>>>>>>>.");
   return (
     <>
       <div className="container">
@@ -57,6 +49,8 @@ export default function BusinessList() {
           </div>
           <div className="border-r border-[#FFD4D4] absolute left-20 top-3 h-10 w-1"></div>
           <input
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             type="text"
             className="py-4 pl-28 pr-6 text-black w-full border-2 border-[#F42A3E] rounded-[10px] placeholder:text-black box-shadow2 focus:outline-none"
             placeholder="Cloths Brands"
@@ -308,50 +302,15 @@ export default function BusinessList() {
             </div>
           </div>
 
-          <div className="lg:w-[70%] ">
-            {loading ? (
-              <Loader />
-            ) : profile?.length === 0 ? (
-              <NoData />
-            ) : (
-              profile?.map((item) => {
-                return (
-                  <div className="flex justify-between items-center gap-6 px-6 box-shadow2 py-4 rounded-[10px] mb-6">
-                    <div className="lg:flex items-center gap-4 mb-6 lg:mb-0">
-                      <div className="">
-                        <img src={item?.logo} alt="maria" className="" />
-                      </div>
-                      <div className="">
-                        <h2 className="text-xl lg:text-4xl font-normal">
-                          <span className="font-bold gradient">
-                            {" "}
-                            {item?.name}
-                          </span>{" "}
-                        </h2>
-                        <div className="flex items-center gap-2 mt-3 lg:mt-0">
-                          <img src={star} alt="star" className="mb-0" />
-                          <h6 className="font-normal text-[#8D8D8D]">
-                            <span className="font-bold text-black">5.0 </span>{" "}
-                            (34 Reviews)
-                          </h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="">
-                      <Link to={`/business-details/${item?.id}`}>
-                        <button className="w-full px-8 py-2 bg-color rounded-md font-bold text-[17px] text-white">
-                          View
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
+          <PaginationItems
+            itemsPerPage={10}
+            category={category}
+            value={value}
+          />
         </div>
+
         {/* pagination */}
-        <div className="my-10 lg:mt-16 lg:mb-24">
+        {/* <div className="my-10 lg:mt-16 lg:mb-24">
           <nav
             aria-label="Page navigation example"
             className=" flex justify-center"
@@ -440,7 +399,7 @@ export default function BusinessList() {
               </li>
             </ul>
           </nav>
-        </div>
+        </div> */}
       </div>
       <OurListed />
     </>
