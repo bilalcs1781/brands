@@ -2,9 +2,9 @@ import { HTTP_CLIENT } from "../utils/axiosClient";
 
 const getAllProfiles = async (category, page, itemsPerPage, name) => {
   return await HTTP_CLIENT.get(
-    `/api/profile/?category=${
-      category ? category : ""
-    }&page=${page}&page_size=${itemsPerPage}&name=${name ? name : ""}`
+    `/api/profile/?category=${category ? category : ""}&page=${
+      page ? page : ""
+    }&page_size=${itemsPerPage ? itemsPerPage : ""}&name=${name ? name : ""}`
   );
 };
 const getSingleProfiles = async (id) => {

@@ -11,6 +11,8 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [total, setTotal] = useState(0);
+
   //   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const handlePageClick = (event) => {
@@ -31,6 +33,7 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
         itemsPerPage,
         value
       );
+      setTotal(res?.data?.count);
       setProfile(res?.data?.results);
     } catch (error) {
       setLoading(false);
@@ -46,8 +49,8 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
   const endOffset = itemOffset + itemsPerPage;
   console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = profile?.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(profile?.length / itemsPerPage);
-
+  const pageCount = Math.ceil(total / itemsPerPage);
+  console.log(profile.length, "length>>>>>>.");
   useEffect(() => {
     const endOffset = +itemsPerPage * +currentPage + +itemsPerPage;
     const itemOffset = +itemsPerPage * +currentPage;
@@ -76,7 +79,7 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
               <div className="flex justify-between items-center gap-6 px-6 box-shadow2 py-4 rounded-[10px] mb-6">
                 <div className="lg:flex items-center gap-4 mb-6 lg:mb-0">
                   <div className="">
-                    <img src={item?.logo} alt="maria" className="" />
+                    <img src={item?.logo} alt="maria" className="w-[100px]" />
                   </div>
                   <div className="">
                     <h2 className="text-xl lg:text-4xl font-normal">
@@ -103,6 +106,7 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
           })
         )}
       </div>
+      {console.log(pageCount, "count>>>>>")}
       <ReactPaginate
         activeClassName={"item active "}
         breakClassName={"item break-me "}

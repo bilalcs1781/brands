@@ -9,11 +9,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 import MainComponent from "./pages/MainComponent";
 import { useEffect } from "react";
-import Aos from "aos";
+import AOS from "aos";
 
 function App() {
   useEffect(() => {
-    Aos.init();
+    AOS.init({
+      duration: 1000, // Example duration
+      once: true, // Whether animation should happen only once
+    });
   }, []);
   return (
     <div className="App">

@@ -302,11 +302,7 @@ export default function BusinessList() {
             </div>
           </div>
 
-          <PaginationItems
-            itemsPerPage={10}
-            category={category}
-            value={value}
-          />
+          <PaginationItems itemsPerPage={1} category={category} value={value} />
         </div>
 
         {/* pagination */}

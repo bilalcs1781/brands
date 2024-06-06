@@ -40,8 +40,11 @@ export default function HeroSection() {
               className="box-shadow text-[15px] focus:outline-none font-medium text-[#464F54] rounded-full px-4 py-5 bg-white w-full border border-white"
               placeholder="Find Perfect Business"
             />
-            <Link to={`/businesslist?name=${name}`}>
-              <button className="bg-[#F4293E] text-2xl font-bold px-6 py-4 text-white rounded-r-full absolute right-0 flex gap-2 items-center">
+            <Link
+              className="absolute right-0"
+              to={`/businesslist?name=${name}`}
+            >
+              <button className="bg-[#F4293E] text-2xl font-bold px-6 py-4 text-white rounded-r-full flex gap-2 items-center">
                 <img
                   src={search}
                   className="h-[24px] w-[24px]"
@@ -51,7 +54,10 @@ export default function HeroSection() {
               </button>
             </Link>
           </div>
-          <h4 className="text-[17px] text-[#464F54] font-semibold">
+          <h4
+            className="text-[17px] text-[#464F54] font-semibold"
+            data-aos="fade-right"
+          >
             <span className="font-bold text-[#000000]">Popular:</span> Web
             Agency, Seo Company, Development Agency....
           </h4>

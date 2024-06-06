@@ -17,7 +17,6 @@ export default function PopularCategories() {
       setLoading(false);
       const res = await getAllCategories();
       setCategory(res?.data?.results);
-      console.log(res?.data?.results, "res>>>>>>>>");
     } catch (error) {
       setLoading(false);
     }
@@ -58,7 +57,7 @@ export default function PopularCategories() {
                     data-aos="zoom-in"
                   >
                     <img src={cloths} alt="cloths" className="mb-4" />
-                    <h2 className="text-2xl font-bold mb-1 gradient">
+                    <h2 className="text-2xl text-center font-bold mb-1 gradient">
                       {item?.name}
                     </h2>
                     <p className="text-[#9B9B9B] text-[15px] font-medium">

@@ -10,7 +10,7 @@ import { setupAxios } from "../../utils/axiosClient";
 import { getAllProfiles } from "../../services/bussiness";
 import Loader from "../../components/Loader/loader";
 import NoData from "../../components/noData/noData";
-import Aos from "aos";
+import AOS from "aos";
 
 export default function FeaturedListings() {
   const [profile, setProfile] = useState([]);
@@ -29,7 +29,12 @@ export default function FeaturedListings() {
   };
   useEffect(() => {
     getProfile();
-    Aos.init();
+  }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 4000, // Example duration
+      once: true, // Whether animation should happen only once
+    });
   }, []);
   return (
     <div className="container mx-auto">
@@ -57,12 +62,15 @@ export default function FeaturedListings() {
         ) : (
           profile?.map((item) => {
             return (
-              <div className="bg-white lg:w-[30%] w-full sm:w-[45%] mt-8  h-full rounded-[10px] box-shadow2 flex max-h-[500px] min-h-[500px] justify-between flex-col px-5 pb-5">
+              <div
+                data-aos="fade-up"
+                className="bg-white lg:w-[30%] w-full sm:w-[45%] mt-8  h-full rounded-[10px] box-shadow2 flex max-h-[500px] min-h-[500px] justify-between flex-col pt-2 px-5 pb-5"
+              >
                 <div className="">
                   <div className="flex items-center justify-center">
-                    <img src={item?.logo} alt="cloths" className="" />
+                    <img src={item?.logo} alt="cloths" className="w-[100px]" />
                   </div>
-                  <div className="bg-[#FFF8F8] border border-border2 p-6  rounded-[20px]">
+                  <div className="bg-[#FFF8F8] border border-border2 p-6 -mt-[50px]  rounded-[20px]">
                     <div className="flex items-center justify-between gap-4 pt-14">
                       <div className="flex gap-5 items-center">
                         <p className="gradient2 h-[45px] w-[45px] rounded text-xl font-medium text-white flex items-center justify-center">

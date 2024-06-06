@@ -22,7 +22,10 @@ import { FileUploader } from "react-drag-drop-files";
 import { RotatingLines } from "react-loader-spinner";
 import { ToastContainer, toast } from "react-toastify";
 import StarRatings from "react-star-ratings";
-
+import { RxAvatar } from "react-icons/rx";
+import { CiLocationOn, CiStar } from "react-icons/ci";
+import { FaStar } from "react-icons/fa";
+import Man from "../../assets/images/man.jpg";
 export default function BusinessDetails() {
   const { bussiness } = useParams();
   const [base64Image, setBase64Image] = useState("");
@@ -116,7 +119,7 @@ export default function BusinessDetails() {
           <div className="lg:flex justify-between items-center gap-4 box-shadow my-10 lg:mb-10 lg:mt-20 p-4 lg:py-8 lg:px-16 rounded-[10px]">
             <div className="lg:flex items-center gap-4 mb-6 lg:mb-0">
               <div>
-                <img src={profile?.logo} alt="image" className="" />
+                <img src={profile?.logo} alt="image" className="w-[100px]" />
               </div>
               <div className="">
                 <h2 className="text-xl lg:text-4xl font-normal">
@@ -401,12 +404,40 @@ export default function BusinessDetails() {
             </div>
           </div>
           <div className="my-10 lg:my-12">
-            <div className="">
-              <img src={Rating} alt="rating" className="" />
+            <div className="flex justify-between">
+              <div className="flex gap-3 items-start">
+                <img
+                  src={Man}
+                  alt="man"
+                  className="w-[60px] h-[60px] rounded-full border-[#fb503c]"
+                />
+
+                <div>
+                  <label className="font-[500]">Kyle.banson</label>
+                  <div className="flex items-center gap-[2px]">
+                    <CiLocationOn />
+                    <small>Lahore, Pakistan</small>
+                  </div>
+                  <div className="flex gap-1 mt-1">
+                    <FaStar color="#FF9800" size={20} />
+                    <FaStar color="#FF9800" size={20} />
+                    <FaStar color="#FF9800" size={20} />
+                    <FaStar color="#FF9800" size={20} />
+                    <FaStar color="#FF9800" size={20} />
+                  </div>
+                  <p className="text-[#888686] mt-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <p className="text-[#888686]">27 October</p>
+              {/* <img src={Rating} alt="rating" className="" /> */}
             </div>
           </div>
           {/* pagination */}
-          <div className="my-16">
+          {/* <div className="my-16">
             <nav
               aria-label="Page navigation example"
               className=" flex justify-center"
@@ -495,7 +526,7 @@ export default function BusinessDetails() {
                 </li>
               </ul>
             </nav>
-          </div>
+          </div> */}
 
           {/* drop review */}
           <div className="">
@@ -543,7 +574,7 @@ export default function BusinessDetails() {
                   border border-[#FF8B49] rounded-[1px] p-4 leading-tight focus:outline-none focus:bg-white "
                       id="your-email"
                       type="text"
-                      placeholder="Choose your rating"
+                      placeholder="Enter your Name"
                     />
                   </div>
 
