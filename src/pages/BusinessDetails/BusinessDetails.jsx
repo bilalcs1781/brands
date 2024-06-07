@@ -30,6 +30,7 @@ export default function BusinessDetails() {
   const { bussiness } = useParams();
   const [base64Image, setBase64Image] = useState("");
   const [review, setReview] = useState("");
+  const [allReview, setAllReview] = useState("");
   const [loadingReview, setLoadingReview] = useState(false);
   const [profile, setProfile] = useState([]);
   const [file, setFile] = useState(null);
@@ -57,6 +58,8 @@ export default function BusinessDetails() {
     };
     try {
       const res = await addReview(payload);
+      const resp = await reviewGet(bussiness * 1);
+      setAllReview(resp?.data);
       toast.success("Review Sent successfully");
       console.log(res);
       setLoadingReview(false);
@@ -71,6 +74,7 @@ export default function BusinessDetails() {
 
     try {
       const res = await reviewGet(bussiness * 1);
+      setAllReview(res?.data);
       setLoadingReview(false);
     } catch (error) {
       setLoadingReview(false);
@@ -407,7 +411,9 @@ export default function BusinessDetails() {
             <div className="flex justify-between">
               <div className="flex gap-3 items-start">
                 <img
-                  src={Man}
+                  src={
+                    allReview?.proof_of_order ? allReview?.proof_of_order : Man
+                  }
                   alt="man"
                   className="w-[60px] h-[60px] rounded-full border-[#fb503c]"
                 />
@@ -426,9 +432,7 @@ export default function BusinessDetails() {
                     <FaStar color="#FF9800" size={20} />
                   </div>
                   <p className="text-[#888686] mt-3">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    {allReview?.description}
                   </p>
                 </div>
               </div>
@@ -556,6 +560,7 @@ export default function BusinessDetails() {
                       onChange={(e) => setRating(e.target.value)}
                       className="appearance-none box-shadow block w-full bg-transparent text-[#000] border border-[#FF8B49] rounded-[1px] p-4 leading-tight focus:outline-none focus:bg-white"
                       id="your-name"
+                      max={5}
                       type="number"
                       placeholder="Choose your rating"
                     />

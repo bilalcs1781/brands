@@ -68,7 +68,11 @@ export default function FeaturedListings() {
               >
                 <div className="">
                   <div className="flex items-center justify-center">
-                    <img src={item?.logo} alt="cloths" className="w-[100px]" />
+                    <img
+                      src={item?.logo}
+                      alt="cloths"
+                      className="w-[100px] h-[100px]"
+                    />
                   </div>
                   <div className="bg-[#FFF8F8] border border-border2 p-6 -mt-[50px]  rounded-[20px]">
                     <div className="flex items-center justify-between gap-4 pt-14">

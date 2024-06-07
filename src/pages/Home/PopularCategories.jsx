@@ -53,16 +53,18 @@ export default function PopularCategories() {
               return (
                 <Link to={`/businessList?category=${item?.name}`}>
                   <div
-                    className="bg-white rounded-[10px] box-shadow2 flex items-center justify-center flex-col p-10"
+                    className="bg-white max-h-[250px] min-h-[250px] rounded-[10px] box-shadow2 flex items-center justify-center flex-col p-10"
                     data-aos="zoom-in"
                   >
                     <img src={cloths} alt="cloths" className="mb-4" />
-                    <h2 className="text-2xl text-center font-bold mb-1 gradient">
-                      {item?.name}
-                    </h2>
-                    <p className="text-[#9B9B9B] text-[15px] font-medium">
-                      607 Listings
-                    </p>
+                    <div>
+                      <h2 className="text-2xl text-center font-bold mb-1 gradient">
+                        {item?.name}
+                      </h2>
+                      <p className="text-[#9B9B9B] mx-auto text-center text-[15px] font-medium">
+                        607 Listings
+                      </p>
+                    </div>
                   </div>
                 </Link>
               );

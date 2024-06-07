@@ -56,7 +56,7 @@ export default function BusinessList() {
             placeholder="Cloths Brands"
           />
         </div>
-        <div className="lg:flex justify-between items-center gap-4 my-10">
+        {/* <div className="lg:flex justify-between items-center gap-4 my-10">
           <div className=" lg:flex justify-center items-center gap-6">
             <button className="box-shadow2 px-4 py-2 rounded-[10px] hover:bg-[#f42a3e] hover:text-white font-normal text-[15px] hover:font-bold">
               Restaurant
@@ -82,7 +82,7 @@ export default function BusinessList() {
               </h6>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* filter */}
         <div className="lg:flex justify-between items-start gap-6 my-10">
           {/* left side */}
@@ -302,7 +302,11 @@ export default function BusinessList() {
             </div>
           </div>
 
-          <PaginationItems itemsPerPage={1} category={category} value={value} />
+          <PaginationItems
+            itemsPerPage={10}
+            category={category}
+            value={value}
+          />
         </div>
 
         {/* pagination */}

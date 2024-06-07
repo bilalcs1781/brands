@@ -26,7 +26,7 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
   const getProfile = async () => {
     setupAxios();
     try {
-      setLoading(false);
+      setLoading(true);
       const res = await getAllProfiles(
         category,
         currentPage + 1,
@@ -35,6 +35,7 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
       );
       setTotal(res?.data?.count);
       setProfile(res?.data?.results);
+      setLoading(false);
     } catch (error) {
       setLoading(false);
     }
@@ -79,7 +80,11 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
               <div className="flex justify-between items-center gap-6 px-6 box-shadow2 py-4 rounded-[10px] mb-6">
                 <div className="lg:flex items-center gap-4 mb-6 lg:mb-0">
                   <div className="">
-                    <img src={item?.logo} alt="maria" className="w-[100px]" />
+                    <img
+                      src={item?.logo}
+                      alt="maria"
+                      className="w-[100px] h-[100px]"
+                    />
                   </div>
                   <div className="">
                     <h2 className="text-xl lg:text-4xl font-normal">
