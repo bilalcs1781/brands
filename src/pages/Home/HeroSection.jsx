@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function HeroSection() {
   const [name, setName] = useState("");
   return (
-    <div className="container mx-auto" data-aos="zoom-in">
+    <div className="container mx-auto" data-aos="zoom-in" data-aos-delay="300">
       <div className="grid lg:grid-cols-2 place-items-center gap-4 py-16 lg:py-0">
         <div className="">
           <div className="flex">

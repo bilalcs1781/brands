@@ -55,15 +55,16 @@ export default function FeaturedListings() {
         </h2>
       </div>
       <div className="w-100 flex-wrap justify-between items-center flex gap-5">
-        {profile?.length === 0 ? (
-          <NoData />
-        ) : loading ? (
+        {loading ? (
           <Loader />
+        ) : profile?.length === 0 ? (
+          <NoData />
         ) : (
           profile?.map((item) => {
             return (
               <div
-                data-aos="fade-up"
+                data-aos="fade-right"
+                data-aos-delay="300"
                 className="bg-white lg:w-[30%] w-full sm:w-[45%] mt-8  h-full rounded-[10px] box-shadow2 flex max-h-[500px] min-h-[500px] justify-between flex-col pt-2 px-5 pb-5"
               >
                 <div className="">

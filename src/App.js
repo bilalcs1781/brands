@@ -9,17 +9,20 @@ import "react-toastify/dist/ReactToastify.css";
 
 import MainComponent from "./pages/MainComponent";
 import { useEffect } from "react";
-import AOS from "aos";
+import Aos from "aos";
+import ClickScrollToTop from "./components/common/scrollToTop";
+import "aos/dist/aos.css";
 
 function App() {
   useEffect(() => {
-    AOS.init({
+    Aos.init({
       duration: 1000, // Example duration
       once: true, // Whether animation should happen only once
     });
   }, []);
   return (
     <div className="App">
+      <ClickScrollToTop />
       <Header />
       <Routes>
         {localStorage.getItem("userIsLoggedIn") ? null : (

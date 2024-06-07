@@ -45,7 +45,10 @@ export default function PopularCategories() {
       {category?.length === 0 ? (
         <NoData />
       ) : (
-        <div className="grid lg:grid-cols-4 2xl:grid-cols-6 gap-8 py-6 lg:py-10 my-10">
+        <div
+          className="grid lg:grid-cols-4 2xl:grid-cols-6 gap-8 py-6 lg:py-10 my-10"
+          data-aos="flip-right"
+        >
           {loading ? (
             <Loader />
           ) : (

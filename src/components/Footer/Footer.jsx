@@ -11,7 +11,11 @@ import { Link } from "react-router-dom";
 export default function index() {
   return (
     <div className="bg-footer-image bg-no-repeat w-[100%] bg-top bg-cover">
-      <div className="container mx-auto relative pt-10 lg:pt-28">
+      <div
+        className="container mx-auto relative pt-10 lg:pt-28"
+        data-aos="flip-right"
+        data-aos-duration="1500"
+      >
         <div className="flex justify-center items-center w-[100%] ">
           <img
             src={footerImg}
@@ -122,4 +126,4 @@ export default function index() {
       </div>
     </div>
   );
-};
+}

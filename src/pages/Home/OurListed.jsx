@@ -15,7 +15,11 @@ import Marquee from "react-fast-marquee";
 export default function OurListed() {
   return (
     <div className="my-24">
-      <div className="flex justify-center items-center" data-aos="zoom-in">
+      <div
+        className="flex justify-center items-center"
+        data-aos-delay="300"
+        data-aos="zoom-in"
+      >
         <h2 className="text-[#000000] text-center">
           <span className="text-xl lg:text-2xl block font-bold mb-1">
             {" "}
