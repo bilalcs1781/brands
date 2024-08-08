@@ -44,7 +44,7 @@ export default function OurListed() {
           speed={60}
           gradient={false}
         >
-          <div className="grid sm:grid-cols-2 lg:grid col-span-5 xl:grid-cols-10 gap-12 place-items-center">
+          <div className="flex gap-20 place-items-center">
             <div className="">
               <img src={faiza} alt="our listed" />
             </div>

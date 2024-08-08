@@ -69,7 +69,7 @@ const PaginationItems = ({ itemsPerPage, category, value }) => {
   console.log(profile, ">>>>>>>>>");
   return (
     <div>
-      <div className="lg:w-[70%] ">
+      <div className="w-full ">
         {loading ? (
           <Loader />
         ) : profile?.length === 0 ? (

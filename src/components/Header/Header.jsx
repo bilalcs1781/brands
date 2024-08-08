@@ -37,7 +37,7 @@ export default function Header() {
             >
               <img src={brandLogo} className="h-8" alt="Brand Logo" />
             </a>
-            <ul className="hidden md:flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="hidden md:flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  dark:border-gray-700">
               <li>
                 {location?.pathname === "/" ? (
                   <a
@@ -60,7 +60,7 @@ export default function Header() {
               <li>
                 <div className="relative">
                   <button
-                    className=" flex items-center py-2 px-3 md:p-0 text-[#464F54] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    className=" flex items-center py-2 px-3 md:p-0 text-[#464F54] font-medium text-[18px] rounded  md:hover:bg-transparent md:hover:text-[#F4293E] dark:text-white  dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
